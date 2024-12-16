@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
-const About = forwardRef<HTMLDivElement, {}>((props, ref) => {
+const About = () => {
   return (
-    <div ref={ref} className="h-auto px-20 py-10 flex-col justify-start items-center gap-10 inline-flex bg-[#EFF9FF]">
+    <div id="about-section" className="h-auto px-20 py-10 flex-col justify-start items-center gap-10 inline-flex bg-[#EFF9FF]">
       {/* Title Section */}
       <div className="self-stretch text-center text-[#2995d7] text-4xl font-bold font-['Poppins'] leading-10">
         What is Dormify?
@@ -16,7 +16,7 @@ const About = forwardRef<HTMLDivElement, {}>((props, ref) => {
       </div>
     </div>
   );
-});
+};
 
 About.displayName = 'About';
 

@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react';
 import { FaArrowDown } from 'react-icons/fa';
 
-interface HeroProps {
-    scrollToAbout: () => void;
-}
-
-const Hero: React.FC<HeroProps> = ({ scrollToAbout }) => {
+const Hero: React.FC = () => {
+    const scrollToAbout = () => {
+        const aboutSection = document.getElementById('about-section');
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
   return (
     <div className="h-auto py-4 px-4 flex flex-col justify-center items-center gap-8 bg-[#EFF9FF] relative">

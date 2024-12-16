@@ -1,5 +1,4 @@
-'use client';
-import React, { useRef } from 'react';
+import React from 'react';
 import About from "@/components/about"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
@@ -9,20 +8,11 @@ import Navbar from "@/components/navbar"
 import Services from "@/components/services"
 
 export default function Home() {
-  const aboutRef = useRef<HTMLDivElement>(null);
-
-  // Function to scroll to the About section
-  const scrollToAbout = () => {
-    if (aboutRef.current) {
-      aboutRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <main className="min-h-screen bg-gray-50">
       <Navbar />
-      <Hero scrollToAbout={scrollToAbout} />
-      <About ref={aboutRef} />
+      <Hero />
+      <About />
       <Services />
       <Manage />
       <Contact />
