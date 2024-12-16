@@ -1,97 +1,32 @@
-import { ScrollSection } from "@/components/scroll-section"
-import { SchoolCard } from "@/components/school-card"
-import { DormCard } from "@/components/dorm-card"
-
-const popularSchools = [
-  {
-    name: "BU",
-    image: "/placeholder.svg?height=200&width=280",
-    reviewCount: 416,
-    href: "/schools/bu"
-  },
-  {
-    name: "Northeastern",
-    image: "/placeholder.svg?height=200&width=280",
-    reviewCount: 362,
-    href: "/schools/northeastern"
-  },
-  {
-    name: "UCR",
-    image: "/placeholder.svg?height=200&width=280",
-    reviewCount: 223,
-    href: "/schools/ucr"
-  },
-  {
-    name: "Cornell",
-    image: "/placeholder.svg?height=200&width=280",
-    reviewCount: 182,
-    href: "/schools/cornell"
-  },
-  {
-    name: "USC",
-    image: "/placeholder.svg?height=200&width=280",
-    reviewCount: 152,
-    href: "/schools/usc"
-  }
-]
-
-const popularDorms = [
-  {
-    name: "Warren Towers",
-    university: "Boston University",
-    image: "/placeholder.svg?height=200&width=280",
-    rating: 4,
-    reviewCount: 86,
-    href: "/dorms/warren-towers"
-  },
-  {
-    name: "Pentland Hills",
-    university: "UC Riverside",
-    image: "/placeholder.svg?height=200&width=280",
-    rating: 4,
-    reviewCount: 73,
-    href: "/dorms/pentland-hills"
-  },
-  {
-    name: "East Lothian",
-    university: "UC Riverside",
-    image: "/placeholder.svg?height=200&width=280",
-    rating: 3.5,
-    reviewCount: 44,
-    href: "/dorms/east-lothian"
-  },
-  {
-    name: "Bay State Road Brownstones",
-    university: "Boston University",
-    image: "/placeholder.svg?height=200&width=280",
-    rating: 4,
-    reviewCount: 39,
-    href: "/dorms/bay-state-road"
-  },
-  {
-    name: "South Campus",
-    university: "Boston University",
-    image: "/placeholder.svg?height=200&width=280",
-    rating: 4,
-    reviewCount: 35,
-    href: "/dorms/south-campus"
-  }
-]
+'use client';
+import React, { useRef } from 'react';
+import About from "@/components/about"
+import Contact from "@/components/contact"
+import Footer from "@/components/footer"
+import Hero from "@/components/hero"
+import Manage from "@/components/manage"
+import Navbar from "@/components/navbar"
+import Services from "@/components/services"
 
 export default function Home() {
+  const aboutRef = useRef<HTMLDivElement>(null);
+
+  // Function to scroll to the About section
+  const scrollToAbout = () => {
+    if (aboutRef.current) {
+      aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-gray-50">
-      <ScrollSection title="Popular Schools">
-        {popularSchools.map((school) => (
-          <SchoolCard key={school.name} {...school} />
-        ))}
-      </ScrollSection>
-      
-      <ScrollSection title="Popular Dorms">
-        {popularDorms.map((dorm) => (
-          <DormCard key={dorm.name} {...dorm} />
-        ))}
-      </ScrollSection>
+      <Navbar />
+      <Hero scrollToAbout={scrollToAbout} />
+      <About ref={aboutRef} />
+      <Services />
+      <Manage />
+      <Contact />
+      <Footer />
     </main>
   )
 }
